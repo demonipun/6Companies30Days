@@ -17,12 +17,12 @@ class Solution
             for(int x: adj[curr]){
                 if(x==d&&curr!=c) {
                     //cout<<curr<<" "<<x<<endl;
-                    return 0;
+                    return 0; // Cycle Exists
                 }
                 if(!vis[x]&&!(curr==c&&x==d)) // Not visited and not ( c-d )
                     q.push(x);
             }
         }
-        return 1;
+        return 1; // Cycle Does Not Exist
     }
 };
