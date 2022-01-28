@@ -6,18 +6,18 @@ public:
     int isValid(vector<vector<int>> mat){
         // VALID => every row, every column and (3*3) grid starting from top can contain numbers 1 to 9 only once.
         int n=mat.size();
-        vector<vector<bool>> row(n+1, vector<bool>(n+1,false));
-        vector<vector<bool>> col(n+1, vector<bool>(n+1,false));
-        vector<vector<bool>> box(n+1, vector<bool>(n+1,false));
+        int row[n][n], col[n][n], box[n][n];
+        for(int i=0;i<n;i++)
+            for(int j=0;j<n;j++)
+            row[i][j]=col[i][j]=box[i][j]=0;
         for(int i=0;i<n;i++){
             for(int j=0;j<n;j++){
                 if(mat[i][j]){
+                    int x=mat[i][j]-1;
                     int k=3*(i/3)+(j/3); // box index
-                    if(row[i][mat[i][j]]||col[j][mat[i][j]]||box[k][mat[i][j]])
-                        return 0;
-                    row[i][mat[i][j]]=true;
-                    col[j][mat[i][j]]=true;
-                    box[k][mat[i][j]]=true;
+                    if(row[i][x]||col[j][x]||box[k][x])
+                         return 0; 
+                    row[i][x]=col[j][x]=box[k][x]=1;
                 }
             }
         }
