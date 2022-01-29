@@ -10,7 +10,7 @@ public:
         for(int i=0;i<n;i++) {
             for(int j=i+1;j<n;j++) {
                 int diff=A[j]-A[i];
-                dp[j][diff]=max(2, dp[i][diff]+1);
+                dp[j][diff]=dp[i][diff]+1;
                 ans=max(ans, dp[j][diff]);
             }
         }
